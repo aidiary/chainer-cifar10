@@ -4,5 +4,5 @@
 #     python train_cifar10.py --gpu 0 --model $model --out result_$model
 # done
 
-# python train_cifar10.py --gpu 0 --model CONV2 --out result_CONV2
+# MomentumSGDの学習率を0.1から0.05に下げた
 python train_cifar10.py --gpu 0 --model CONV3 --out result_CONV3
