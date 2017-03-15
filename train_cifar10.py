@@ -38,6 +38,7 @@ def main():
     print('GPU: {}'.format(args.gpu))
     print('# Minibatch-size: {}'.format(args.batchsize))
     print('# epoch: {}'.format(args.epoch))
+    print('model type: {}'.format(args.model))
     print('')
 
     # load CIFAR-10 dataset
