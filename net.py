@@ -56,3 +56,29 @@ class LeNet(chainer.Chain):
         # print("y", y.shape)
 
         return y
+
+
+class CONV_relu(chainer.Chain):
+    def __init__(self, class_labels):
+        super(CONV_relu, self).__init__(
+            conv1=F.Convolution2D(None, 6, ksize=5),
+            conv2=F.Convolution2D(None, 16, ksize=5),
+            fc1=F.Linear(None, 120),
+            fc2=F.Linear(None, 84),
+            fc3=F.Linear(None, class_labels)
+        )
+        self.train = True
+
+    def __call__(self, x):
+        h = F.relu(self.conv1(x))
+        h = F.max_pooling_2d(h, ksize=2)
+
+        h = F.relu(self.conv2(h))
+        h = F.max_pooling_2d(h, ksize=2)
+        h = F.dropout(h, ratio=0.5, train=self.train)
+
+        h = F.relu(self.fc1(h))
+        h = F.relu(self.fc2(h))
+        y = self.fc3(h)
+
+        return y
