@@ -24,11 +24,11 @@ class LeNet(chainer.Chain):
 
     def __init__(self, class_labels):
         super(LeNet, self).__init__(
-            conv1=F.Convolution2D(None, 6, ksize=5),
-            conv2=F.Convolution2D(None, 16, ksize=5),
-            fc1=F.Linear(None, 120),
-            fc2=F.Linear(None, 84),
-            fc3=F.Linear(None, class_labels)
+            conv1=L.Convolution2D(None, 6, ksize=5),
+            conv2=L.Convolution2D(None, 16, ksize=5),
+            fc1=L.Linear(None, 120),
+            fc2=L.Linear(None, 84),
+            fc3=L.Linear(None, class_labels)
         )
         self.train = True
 
@@ -61,11 +61,11 @@ class LeNet(chainer.Chain):
 class CONV_relu(chainer.Chain):
     def __init__(self, class_labels):
         super(CONV_relu, self).__init__(
-            conv1=F.Convolution2D(None, 6, ksize=5),
-            conv2=F.Convolution2D(None, 16, ksize=5),
-            fc1=F.Linear(None, 120),
-            fc2=F.Linear(None, 84),
-            fc3=F.Linear(None, class_labels)
+            conv1=L.Convolution2D(None, 6, ksize=5),
+            conv2=L.Convolution2D(None, 16, ksize=5),
+            fc1=L.Linear(None, 120),
+            fc2=L.Linear(None, 84),
+            fc3=L.Linear(None, class_labels)
         )
         self.train = True
 
@@ -87,13 +87,13 @@ class CONV_relu(chainer.Chain):
 class CONV2(chainer.Chain):
     def __init__(self, class_labels):
         super(CONV2, self).__init__(
-            conv1=F.Convolution2D(None, 6, ksize=3, pad=1),
-            conv2=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv3=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv4=F.Convolution2D(None, 16, ksize=3, pad=1),
-            fc1=F.Linear(None, 120),
-            fc2=F.Linear(None, 84),
-            fc3=F.Linear(None, class_labels)
+            conv1=L.Convolution2D(None, 6, ksize=3, pad=1),
+            conv2=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv3=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv4=L.Convolution2D(None, 16, ksize=3, pad=1),
+            fc1=L.Linear(None, 120),
+            fc2=L.Linear(None, 84),
+            fc3=L.Linear(None, class_labels)
         )
         self.train = True
 
@@ -123,15 +123,15 @@ class CONV2(chainer.Chain):
 class CONV3(chainer.Chain):
     def __init__(self, class_labels):
         super(CONV3, self).__init__(
-            conv1=F.Convolution2D(None, 6, ksize=3, pad=1),
-            conv2=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv3=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv4=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv5=F.Convolution2D(None, 16, ksize=3, pad=1),
-            conv6=F.Convolution2D(None, 16, ksize=3, pad=1),
-            fc1=F.Linear(None, 120),
-            fc2=F.Linear(None, 84),
-            fc3=F.Linear(None, class_labels)
+            conv1=L.Convolution2D(None, 6, ksize=3, pad=1),
+            conv2=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv3=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv4=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv5=L.Convolution2D(None, 16, ksize=3, pad=1),
+            conv6=L.Convolution2D(None, 16, ksize=3, pad=1),
+            fc1=L.Linear(None, 120),
+            fc2=L.Linear(None, 84),
+            fc3=L.Linear(None, class_labels)
         )
         self.train = True
 
