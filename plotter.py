@@ -35,7 +35,8 @@ if __name__ == '__main__':
                 ('LeNet (Adam)', 'result_LeNet_Adam/log'),
                 ('CONV_relu', 'result_CONV_relu/log'),
                 ('CONV2', 'result_CONV2/log'),
-                ('CONV3', 'result_CONV3/log')]
+                ('CONV3', 'result_CONV3/log'),
+                ('CONV3_bn', 'result_CONV3_bn/log')]
 
     plot_result(logfiles, 'main/loss', 'cifar10_loss.png')
     plot_result(logfiles, 'main/accuracy', 'cifar10_acc.png')

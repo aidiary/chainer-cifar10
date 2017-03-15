@@ -31,7 +31,7 @@ def main():
     parser.add_argument('--resume', '-r', default='',
                         help='Resume the training from snapshot')
     parser.add_argument('--model', '-m',
-                        choices=('MLP3', 'LeNet', 'CONV_relu', 'CONV2', 'CONV3'),
+                        choices=('MLP3', 'LeNet', 'CONV_relu', 'CONV2', 'CONV3', 'CONV3_bn'),
                         default='LeNet', help='model type')
     args = parser.parse_args()
 
@@ -56,6 +56,8 @@ def main():
         model = CONV2(class_labels)
     elif args.model == 'CONV3':
         model = CONV3(class_labels)
+    elif args.model == 'CONV3_bn':
+        model = CONV3_bn(class_labels)
 
     model = L.Classifier(model)
     if args.gpu >= 0:
