@@ -82,3 +82,84 @@ class CONV_relu(chainer.Chain):
         y = self.fc3(h)
 
         return y
+
+
+class CONV2(chainer.Chain):
+    def __init__(self, class_labels):
+        super(CONV2, self).__init__(
+            conv1=F.Convolution2D(None, 6, ksize=3, pad=1),
+            conv2=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv3=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv4=F.Convolution2D(None, 16, ksize=3, pad=1),
+            fc1=F.Linear(None, 120),
+            fc2=F.Linear(None, 84),
+            fc3=F.Linear(None, class_labels)
+        )
+        self.train = True
+
+    def __call__(self, x):
+        # print(x.shape)
+
+        # conv block 1
+        h = F.relu(self.conv1(x))
+        h = F.relu(self.conv2(x))
+        h = F.max_pooling_2d(h, ksize=2)
+        # print(h.shape)
+
+        # conv block 2
+        h = F.relu(self.conv3(h))
+        h = F.relu(self.conv4(h))
+        h = F.max_pooling_2d(h, ksize=2)
+        h = F.dropout(h, ratio=0.5, train=self.train)
+        # print(h.shape)
+
+        h = F.relu(self.fc1(h))
+        h = F.relu(self.fc2(h))
+        y = self.fc3(h)
+
+        return y
+
+
+class CONV3(chainer.Chain):
+    def __init__(self, class_labels):
+        super(CONV3, self).__init__(
+            conv1=F.Convolution2D(None, 6, ksize=3, pad=1),
+            conv2=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv3=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv4=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv5=F.Convolution2D(None, 16, ksize=3, pad=1),
+            conv6=F.Convolution2D(None, 16, ksize=3, pad=1),
+            fc1=F.Linear(None, 120),
+            fc2=F.Linear(None, 84),
+            fc3=F.Linear(None, class_labels)
+        )
+        self.train = True
+
+    def __call__(self, x):
+        # print(x.shape)
+
+        # conv block 1
+        h = F.relu(self.conv1(x))
+        h = F.relu(self.conv2(x))
+        h = F.max_pooling_2d(h, ksize=2)
+        # print(h.shape)
+
+        # conv block 2
+        h = F.relu(self.conv3(h))
+        h = F.relu(self.conv4(h))
+        h = F.max_pooling_2d(h, ksize=2)
+        h = F.dropout(h, ratio=0.5, train=self.train)
+        # print(h.shape)
+
+        # conv block 3
+        h = F.relu(self.conv5(h))
+        h = F.relu(self.conv6(h))
+        h = F.max_pooling_2d(h, ksize=2)
+        h = F.dropout(h, ratio=0.5, train=self.train)
+        print(h.shape)
+        exit()
+        h = F.relu(self.fc1(h))
+        h = F.relu(self.fc2(h))
+        y = self.fc3(h)
+
+        return y

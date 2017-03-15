@@ -33,7 +33,8 @@ if __name__ == '__main__':
     logfiles = [('MLP3', 'result_MLP3/log'),
                 ('LeNet (mSGD)', 'result_LeNet_mSGD/log'),
                 ('LeNet (Adam)', 'result_LeNet_Adam/log'),
-                ('CONV_relu', 'result_CONV_relu/log')]
+                ('CONV_relu', 'result_CONV_relu/log'),
+                ('CONV2', 'result_CONV2/log')]
 
     plot_result(logfiles, 'main/loss', 'cifar10_loss.png')
     plot_result(logfiles, 'main/accuracy', 'cifar10_acc.png')
