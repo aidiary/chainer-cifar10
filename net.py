@@ -102,7 +102,7 @@ class CONV2(chainer.Chain):
 
         # conv block 1
         h = F.relu(self.conv1(x))
-        h = F.relu(self.conv2(x))
+        h = F.relu(self.conv2(h))
         h = F.max_pooling_2d(h, ksize=2)
         # print(h.shape)
 
@@ -140,7 +140,7 @@ class CONV3(chainer.Chain):
 
         # conv block 1
         h = F.relu(self.conv1(x))
-        h = F.relu(self.conv2(x))
+        h = F.relu(self.conv2(h))
         h = F.max_pooling_2d(h, ksize=2)
         # print(h.shape)
 
@@ -148,7 +148,6 @@ class CONV3(chainer.Chain):
         h = F.relu(self.conv3(h))
         h = F.relu(self.conv4(h))
         h = F.max_pooling_2d(h, ksize=2)
-        h = F.dropout(h, ratio=0.5, train=self.train)
         # print(h.shape)
 
         # conv block 3
@@ -156,8 +155,8 @@ class CONV3(chainer.Chain):
         h = F.relu(self.conv6(h))
         h = F.max_pooling_2d(h, ksize=2)
         h = F.dropout(h, ratio=0.5, train=self.train)
-        print(h.shape)
-        exit()
+        # print(h.shape)
+
         h = F.relu(self.fc1(h))
         h = F.relu(self.fc2(h))
         y = self.fc3(h)
